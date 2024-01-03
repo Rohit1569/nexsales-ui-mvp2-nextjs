@@ -1,0 +1,20 @@
+// Card.js
+import React from "react";
+
+const Card = ({ title, number }) => (
+  <div className="h-[140px] w-[286px] border-[1px] rounded-t-lg bg-white mt-[14px]">
+    <div className="text-center">
+      <h3 className="font-inter font-medium text-[#475467] pt-6 text-md leading-6">
+        {title}
+      </h3>
+      <div className="text-center font-inter font-semibold text-3xl text-[#101828] leading-11 tracking-tight">
+        <p className="text-4xl font-bold">{number}</p>
+      </div>
+    </div>
+    <div
+      className={`bg-[#6C8B9F] h-[10px] w-full rounded-b-lg mt-[50px]`}
+    ></div>
+  </div>
+);
+
+export default Card;

@@ -1,113 +1,327 @@
-import Image from 'next/image'
+import Card from "@/components/Card";
+import DynamicTable from "@/components/DynamicTable";
+import Table from "@/components/Table";
+import Image from "next/image";
 
 export default function Home() {
+  const cardData = [
+    { title: "Request Raised", number: 5 },
+    { title: "Request Fullfilled", number: 1 },
+    { title: "Request Rejected", number: 1 },
+    { title: "Work-in-progress", number: 3 },
+  ];
+
+  const tableData = [
+    {
+      Name: "John Doe",
+      EmailAddress: {
+        url: "mailto:rohit@nexsales.com",
+        text: "rohit@nexsales.com",
+      },
+      CompanyName: "nexsales",
+      CompanyWebsite: {
+        url: "https://www.nexsales.com/",
+        text: "www.nexsales.com",
+      },
+      Title: "developer",
+      Level: "senior developer",
+      Department: "IT",
+      PhoneNumber: "1234567890",
+      UserAccess: "granted",
+    },
+  ];
+
+  const calendlyDetailTaleData = [
+    {
+      AppointmentModule: "SAM",
+      AppointmentDates: "Aug 13, 2023 15:00",
+      Attendees: [
+        {
+          text: "SK",
+          classes:
+            "bg-[#E6F5F8] text-white w-[32px] h-[32px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50",
+          color: "#20276F",
+        },
+        {
+          text: "SM",
+          classes:
+            "bg-[#E6F5F8] text-white w-[32px] h-[32px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50",
+          color: "#20276F",
+        },
+        {
+          text: "PL",
+          classes:
+            "bg-[#E6F5F8] text-white w-[32px] h-[32px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50",
+          color: "#20276F",
+        },
+        {
+          text: "NS",
+          classes:
+            "bg-[#E6F5F8] text-white w-[32px] h-[32px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50",
+          color: "#20276F",
+        },
+        {
+          text: "SB",
+          classes:
+            "bg-[#E6F5F8] text-white w-[32px] h-[32px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50",
+          color: "#20276F",
+        },
+        {
+          text: "+2",
+          classes:
+            "bg-[#E6F5F8] text-white w-[32px] h-[32px] p-[6px] flex-shrink-[0px] rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50",
+          color: "#20276F",
+        },
+      ],
+    },
+  ];
+
+  const tamFilterTable = [
+    {
+      FilterName: "Nexsales-TAM Dashboard",
+      DateAndTime: "Aug 13, 2023 15:00",
+      " ": "",
+      "": "",
+    },
+    {
+      FilterName: "Nexsales-SAM Dashboard",
+      DateAndTime: "Aug 13, 2023 15:00",
+      " ": "",
+      "": "",
+    },
+  ];
+
+  const tamSampleFilterTable = [
+    {
+      FilterName: "Nexsales-TAM Dashboard",
+      RequestDateAndTime: "Aug 13, 2023 15:00",
+      ActionStage: [
+        {
+          text: "Assgined",
+          imageSrc: "/green.svg",
+          classes:
+            "flex p-[2px] pl-[6px] pr-[8px] justify-center items-center gap-[6px] rounded-2xl bg-[#ECFDF3] text-[#027A48])",
+          color: "#027A48",
+        },
+      ],
+      RequestStatus: [
+        {
+          text: "Pending",
+          imageSrc: "/grey.svg",
+          classes:
+            "flex p-[2px] pl-[6px] pr-[8px] justify-center items-center gap-[6px] rounded-2xl bg-[#F2F4F7] text-027A48)",
+          color: "#344054",
+        },
+      ],
+      AssignTo: {
+        text: "RV",
+        classes:
+          "bg-[#E6F5F8] text-white w-[42px] h-[42px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50",
+        color: "#20276F",
+      },
+
+      Remark: "Random",
+      " ": "",
+    },
+    {
+      FilterName: "Nexsales-TAM Dashboard",
+      RequestDateAndTime: "Aug 13, 2023 15:00",
+      ActionStage: [
+        {
+          text: "Rejected",
+          imageSrc: "/_Dot.svg",
+          classes:
+            "flex p-[2px] pl-[6px] pr-[8px] justify-center items-center gap-[6px] rounded-2xl bg-[#FEF3F2] text-027A48)",
+          color: "#B42318",
+        },
+      ],
+      RequestStatus: [
+        {
+          text: "Completed",
+          imageSrc: "/green.svg",
+          classes:
+            "flex p-[2px] pl-[6px] pr-[8px] justify-center items-center gap-[6px] rounded-2xl bg-[#ECFDF3] text-027A48)",
+          color: "#027A48",
+        },
+      ],
+      AssignTo: {
+        text: "RV",
+        classes:
+          "bg-[#E6F5F8] text-white w-[42px] h-[42px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50",
+        color: "#20276F",
+      },
+      Remark: "Random",
+      " ": "",
+    },
+  ];
+
+  const otherUsersFromNexsales = [
+    {
+      Users: "Milap Shah",
+      Title: "CEO",
+      Requests: "TAM Sample Account, SAM",
+    },
+  ];
+  const columnWidths = {
+    AppointmentModule: 900,
+    FilterName: 900,
+    Users: 600,
+    Title: 600,
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className="h-[800px] w-full  m-0 p-0 gap-32">
+        <div
+          style={{ backgroundColor: "#F7FCFD" }}
+          className=" shadow-xl ml-[60px] mt-[-410px] z-1 flex justify-center align-middle p-[10px]"
+        >
+          <div className="h-full w-full pt-[48px] pb-[48px]">
+            <div>
+              <div className="font-inter text-3xl font-medium mt-[-60px]">
+                <h1>Admin Dashboard</h1>
+              </div>
+              <div className="font-inter text-[#667085] font-normal text-sm leading-6 text-tableHeading">
+                <p>
+                  Effortlessly Manage, Monitor and Modify: Your control center
+                  for seamless oversight and optimization.
+                </p>
+              </div>
+              <div className="pt-[32px] flex font-inter text-sm text-tableHeading">
+                <button className="p-[2px] hover:border-solid hover:border-blue-800">
+                  Users
+                </button>
+                <button className="p-[2px] hover:border-solid hover:border-blue-800">
+                  Requests
+                </button>
+              </div>
+              <div className="pt-[10px]">
+                <hr className="hover:border-blue-800"></hr>
+              </div>
+            </div>
+            <div className="flex self-stretch items-center justify-between rounded-t-lg">
+              {cardData.map((item) => (
+                <Card
+                  key={item.title}
+                  title={item.title}
+                  number={item.number}
+                />
+              ))}
+            </div>
+
+            <div>
+              <div className="flex items-center bg-white mt-[32px] ml-[0px] border-t border-l border-r p-2">
+                <h1 className="p-[15px] text-xl font-inter font-normal">
+                  User Details
+                </h1>
+              </div>
+
+              <div className="border-b border-l border-r">
+                <DynamicTable data={tableData} style={{ marginTop: 0 }} />
+              </div>
+            </div>
+
+            <div className="h-[60px] flex items-center bg-white mt-[32px] ml-[0px] border-t border-l border-r p-2">
+              <h1 className="p-[15px] text-xl font-inter font-normal">
+                Calendly Detail
+              </h1>
+            </div>
+            <div className="border-b border-l border-r">
+              <DynamicTable
+                data={calendlyDetailTaleData}
+                columnWidths={columnWidths}
+                style={{ marginTop: 0 }}
+              />
+            </div>
+            <div className="h-[60px] flex items-center bg-white mt-[32px] ml-[0px] border-t border-l border-r p-2">
+              <div>
+                <h1 className="p-[15px] text-xl font-inter font-normal">TAM</h1>
+              </div>
+              <div class="flex p-2 px-8 justify-center items-center rounded-2xl bg-blue-100">
+                <h2 class="text-center text-xs font-inter font-medium text-blue-700">
+                  4 Filters
+                </h2>
+              </div>
+            </div>
+            <div className="border-b border-l border-r">
+              <DynamicTable
+                data={tamFilterTable}
+                columnWidths={columnWidths}
+                style={{ marginTop: 0 }}
+                buttonColumnName
+                externalButtonColumnName
+              />
+            </div>
+            <div className="h-[60px] flex items-center bg-white mt-[32px] ml-[0px] border-t border-l border-r p-2">
+              <div>
+                <h1 className="p-[15px] text-xl font-inter font-normal">
+                  TAM Sample Account
+                </h1>
+              </div>
+              <div class="flex p-2 px-8 justify-center items-center rounded-2xl bg-blue-100">
+                <h2 class="text-center text-xs font-inter font-medium text-blue-700">
+                  4 Requests
+                </h2>
+              </div>
+            </div>
+            <div className="border-b border-l border-r">
+              <DynamicTable
+                data={tamSampleFilterTable}
+                buttonColumnName
+                style={{ marginTop: 0 }}
+              />
+            </div>
+            <div className="h-[60px] flex items-center bg-white mt-[32px] ml-[0px] border-t border-l border-r p-2">
+              <div>
+                <h1 className="p-[15px] text-xl font-inter font-normal">SAM</h1>
+              </div>
+              <div class="flex p-2 px-8 justify-center items-center rounded-2xl bg-blue-100">
+                <h2 class="text-center text-xs font-inter font-medium text-blue-700">
+                  1 Request
+                </h2>
+              </div>
+            </div>
+            <div className="border-b border-l border-r">
+              <DynamicTable
+                data={tamSampleFilterTable}
+                buttonColumnName
+                style={{ marginTop: 0 }}
+              />
+            </div>
+            <div className="h-[60px] flex items-center bg-white mt-[32px] ml-[0px] border-t border-l border-r p-2">
+              <div>
+                <h1 className="p-[15px] text-xl font-inter font-normal">
+                  Clone Your Customer
+                </h1>
+              </div>
+              <div class="flex p-2 px-8 justify-center items-center rounded-2xl bg-blue-100">
+                <h2 class="text-center text-xs font-inter font-medium text-blue-700">
+                  1 Request
+                </h2>
+              </div>
+            </div>
+            <div className="border-b border-l border-r">
+              <DynamicTable
+                data={tamSampleFilterTable}
+                buttonColumnName
+                style={{ marginTop: 0 }}
+              />
+            </div>
+            <div className="flex items-center bg-white mt-[32px] ml-[0px] border-t border-l border-r p-2">
+              <h1 className="p-[15px] text-xl font-inter font-normal">
+                Other users from Nexsales
+              </h1>
+            </div>
+            <div className="border-b border-l border-r">
+              <DynamicTable
+                data={otherUsersFromNexsales}
+                columnWidths={columnWidths}
+                style={{ marginTop: 0 }}
+              />
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </>
+  );
 }
