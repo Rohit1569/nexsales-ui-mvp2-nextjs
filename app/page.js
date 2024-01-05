@@ -27,7 +27,15 @@ export default function Home() {
       Level: "senior developer",
       Department: "IT",
       PhoneNumber: "1234567890",
-      UserAccess: "granted",
+      UserAccess: [
+        {
+          text: "granted",
+          imageSrc: "/green.svg",
+          classes:
+            "flex p-[2px] pl-[6px] pr-[8px] justify-center items-center gap-[6px] rounded-2xl bg-[#ECFDF3] text-[#027A48])",
+          color: "#027A48",
+        },
+      ],
     },
   ];
 
@@ -100,7 +108,7 @@ export default function Home() {
           text: "Assgined",
           imageSrc: "/green.svg",
           classes:
-            "flex p-[2px] pl-[6px] pr-[8px] justify-center items-center gap-[6px] rounded-2xl bg-[#ECFDF3] text-[#027A48])",
+            "flex p-[2px] pl-[6px] pr-[8px] justify-center items-center gap-[6px] rounded-2xl bg-[#ECFDF3] text-[#027A48] )",
           color: "#027A48",
         },
       ],
@@ -114,10 +122,12 @@ export default function Home() {
         },
       ],
       AssignTo: {
-        text: "RV",
+        text: "NS",
         classes:
-          "bg-[#E6F5F8] text-white w-[42px] h-[42px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50",
+          "bg-[#E6F5F8] text-white w-[42px] h-[42px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50 flex items-center justify-center",
         color: "#20276F",
+        name: "Nilesh Suvarna", // Add the "Name" property
+        email: "Nilesh.survarna@nexsales.org",
       },
 
       Remark: "Random",
@@ -145,10 +155,12 @@ export default function Home() {
         },
       ],
       AssignTo: {
-        text: "RV",
+        text: "NS",
         classes:
-          "bg-[#E6F5F8] text-white w-[42px] h-[42px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50",
+          "bg-[#E6F5F8] text-white w-[42px] h-[42px] p-[6px] flex-shrink-0 rounded-full border-2 border-white bg-Tertiary-Bright-Cyan-50 flex items-center justify-center",
         color: "#20276F",
+        name: "Nilesh Suvarna", // Add the "Name" property
+        email: "Nilesh.survarna@nexsales.org",
       },
       Remark: "Random",
       " ": "",
@@ -199,7 +211,7 @@ export default function Home() {
                 <hr className="hover:border-blue-800"></hr>
               </div>
             </div>
-            <div className="flex self-stretch items-center justify-between rounded-t-lg">
+            <div className="flex self-stretch items-center justify-between rounded-t-lg gap-3">
               {cardData.map((item) => (
                 <Card
                   key={item.title}
